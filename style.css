@@ -48,8 +48,9 @@ body * {
 #container {
   /*background-color: rgba(125,0,41,0.80);*/
   border-radius: 8px;
-  width: 360px;
-  margin: 56px auto;
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px;
 }
 
 /* Profile */
