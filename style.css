@@ -6,52 +6,40 @@
 
 :root {
   --text-color: white;
-  --bg-url: url(./assets/Tela\ de\ Fundo\ Floral.png);
+  --bg-url: url(./assets/bg-mobile.png);
   --stroke-color: rgba(255, 255, 255, 0.50);
   --surface-color: rgba(255, 255, 255, 0.10);
   --switch-img: url(./assets/MoonStars.svg);
-
   --surface-color-hover: rgba(255, 255, 255, 0.05);
   --highlight-color: rgba(255, 255, 255, 0.20);
 }
 
 .light {
   --text-color: black;
-  --bg-url: url(./assets/Tele\ de\ fundo\ Light.png);
+  --bg-url: url(./assets/bg-mobile-light.png);
   --stroke-color: rgba(0, 0, 0, 0.50);
   --surface-color:rgba(0, 0, 0, 0.05);
   --switch-img: url(./assets/Sun.svg);
-
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.10);
 } 
 
 body {
-  /*backgroud e suas propriedades:
-  
-  background-image: url(./assets/bg-mobile.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  Isso pode ser escrito em uma única sentença, assim:
-
-  backgroud: color image repeat position/size*/
-
   background: var(--bg-url) top center/cover;
-  height: 100vh;
+  height: 100svh;
 }
 
 body * {
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
-
 }
 
 #container {
-  /*background-color: rgba(125,0,41,0.80);*/
-  border-radius: 8px;
   width: 100%;
   max-width: 588px;
-  margin: 56px auto 0px;
+  /* margin: 56px auto 0px; */
+  margin: 0 auto;
+  padding: 56px 24px 0;
 }
 
 /* Profile */
@@ -69,11 +57,17 @@ body * {
   line-height: 24px; 
   margin-top: 8px;
 }
-
+#subtitulo {
+  font-weight: 400;
+  line-height: 12px; 
+  margin-top: 8px;
+  font-size: 14px;
+}
 /* switch  */
 #switch {
   position: relative;
   width: 64px;
+
   margin: 4px auto;
 }
 
@@ -89,11 +83,16 @@ body * {
   left: 0;
   z-index: 1;
   transform:translateY(-50%);
+
+  animation: slide-back 0.4s;
 }
 
 .light #switch button{
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -110,17 +109,18 @@ body * {
 /* Lista de Links*/
 ul {
   list-style: none;
+  
   display: flex;
   flex-direction: column;
   gap:16px;
-  padding:24px 24px;
-}
 
+  padding:24px 0;
+}
 
 ul li a {
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 
   padding: 16px 24px;
  
@@ -130,6 +130,7 @@ ul li a {
   
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
+
   transition: background 0.2s;
 
   text-decoration:none;
@@ -142,28 +143,28 @@ ul li a:hover {
   background: var(--surface-color-hover);
 }
 
+/*social links*/
 #social-links{
   display: flex;
-  padding: 24px;
-  gap: 16px;
   justify-content: center;
-  align-items: flex-start;
-  font-size: 24px;
-  align-self: stretch;
   
+  padding: 24px 0;
+
+  font-size: 24px;  
 }
 
 #social-links ion-icon {
   padding: 16px;
+  border-radius: 50%;
+  transition: background 0.2s;
 }
 
 #social-links ion-icon:hover {
   background-color: var(--highlight-color);
-  border-radius: 50%;
 }
 
 footer {
-  padding: 24px 0;
+  padding: 14px 0 10px;
   text-align: center;
   font-size: 14px;
 }
@@ -171,13 +172,31 @@ footer {
 /* media queries */
 @media (min-width: 700px){
   :root {
-    --bg-url: url(./assets/bg-desktop.jpg);
+    --bg-url: url(./assets/bg-desktop.png);
   }
   .light {
-    --bg-url: url(./assets/bg-desktop-light.jpg);
+    --bg-url: url(./assets/bg-desktop-light.png);
   }
 }
 
+/*animation*/
+@keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from{
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
   /*ion-icon {
   padding: 8px;
 }
